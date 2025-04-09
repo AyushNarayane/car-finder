@@ -13,6 +13,7 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
+  const [totalCars, setTotalCars] = useState(0);
   const [filters, setFilters] = useState<FilterOptions>({
     brand: 'All',
     priceRange: { min: 0, max: 1000000 },
@@ -25,13 +26,7 @@ export default function Home() {
   });
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const [totalCars, setTotalCars] = useState(0);
   const carsPerPage = 10;
-
-  // Fetch cars when filters, sort, or page changes
-  useEffect(() => {
-    fetchCars();
-  }, [filters, sortOption, currentPage, searchQuery]);
 
   const fetchCars = async () => {
     setIsLoading(true);
@@ -88,6 +83,11 @@ export default function Home() {
       setIsLoading(false);
     }
   };
+
+  // Fetch cars when filters, sort, or page changes
+  useEffect(() => {
+    fetchCars();
+  }, [filters, sortOption, currentPage, searchQuery]);
 
   const handleSearch = (query: string) => {
     setSearchQuery(query);

@@ -21,13 +21,13 @@ export default function SearchFilters({ onFilterChange, initialFilters }: Search
     }
   }, [initialFilters]);
 
-  const handleFilterChange = (filterName: string, value: any) => {
+  const handleFilterChange = (filterName: string, value: string | number | { min: number; max: number }) => {
     let updatedFilters;
     
     if (filterName === 'priceRange') {
       updatedFilters = {
         ...filters,
-        priceRange: value
+        priceRange: value as { min: number; max: number }
       };
     } else {
       updatedFilters = {

@@ -25,6 +25,11 @@ export default function WishlistPage() {
     loadWishlistItems();
   };
 
+  const handleRemoveFromWishlist = (carId: string) => {
+    removeFromWishlist(parseInt(carId));
+    loadWishlistItems();
+  };
+
   const handleCardClick = (car: Car) => {
     setSelectedCar(car);
   };
