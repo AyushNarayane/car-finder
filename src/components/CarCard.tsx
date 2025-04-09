@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, JSX } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import { Car } from '@/types';
 import { addToWishlist, removeFromWishlist, isInWishlist } from '@/utils/wishlist';
@@ -6,37 +7,30 @@ import { addToWishlist, removeFromWishlist, isInWishlist } from '@/utils/wishlis
 interface CarCardProps {
   car: Car;
   onWishlistChange?: () => void;
-  onClick?: () => void;
+  onClick?: (car: Car) => void;
+  onRemoveFromWishlist?: (carId: string) => void;
 }
 
-export default function CarCard({ car, onWishlistChange, onClick }: CarCardProps) {
-  const [inWishlist, setInWishlist] = useState(false);
-  
-  useEffect(() => {
-    setInWishlist(isInWishlist(car.id));
-  }, [car.id]);
-  
+export default React.memo(function CarCard({ car, onWishlistChange, onClick, onRemoveFromWishlist }: CarCardProps): JSX.Element {
+  const inWishlist = isInWishlist(car.id);
+
   const handleWishlistToggle = (e: React.MouseEvent) => {
-    // Prevent the click from bubbling up to the card
     e.stopPropagation();
     
     if (inWishlist) {
       removeFromWishlist(car.id);
-      setInWishlist(false);
+      onRemoveFromWishlist?.(car.id.toString());
     } else {
       addToWishlist(car);
-      setInWishlist(true);
     }
     
-    if (onWishlistChange) {
-      onWishlistChange();
-    }
+    onWishlistChange?.();
   };
   
   return (
     <div 
       className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden transition-transform hover:scale-[1.02] hover:shadow-lg cursor-pointer"
-      onClick={onClick}
+      onClick={() => onClick && onClick(car)}
     >
       <div className="relative h-48 w-full">
         <Image 
@@ -96,4 +90,4 @@ export default function CarCard({ car, onWishlistChange, onClick }: CarCardProps
       </div>
     </div>
   );
-}
+});
