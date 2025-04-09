@@ -88,7 +88,7 @@ export default function Home() {
   // Fetch cars when filters, sort, or page changes
   useEffect(() => {
     fetchCars();
-  }, [filters, sortOption, currentPage, searchQuery]);
+  }, [fetchCars]);
 
   const handleSearch = (query: string) => {
     setSearchQuery(query);
@@ -96,8 +96,11 @@ export default function Home() {
   };
 
   const handleFilterChange = (newFilters: FilterOptions) => {
-    setFilters(newFilters);
-    setCurrentPage(1); // Reset to first page on filter change
+    setFilters(prev => {
+      if (JSON.stringify(prev) === JSON.stringify(newFilters)) return prev;
+      return newFilters;
+    });
+    setCurrentPage(1);
   };
 
   const handleSortChange = (newSortOption: SortOption) => {

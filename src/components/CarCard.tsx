@@ -1,5 +1,4 @@
-import { useState, useEffect, JSX } from 'react';
-import React from 'react';
+import React, { JSX } from 'react';
 import Image from 'next/image';
 import { Car } from '@/types';
 import { addToWishlist, removeFromWishlist, isInWishlist } from '@/utils/wishlist';

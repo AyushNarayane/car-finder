@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import Layout from '@/components/Layout';
 import { Car } from '@/types';
-import { getWishlist, removeFromWishlist } from '@/utils/wishlist';
+import { getWishlist } from '@/utils/wishlist';
 import CarCard from '@/components/CarCard';
 import CarDetails from '@/components/CarDetails';
 
