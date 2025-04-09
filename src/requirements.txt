@@ -1,0 +1,48 @@
+Assignment: Next.js/React.js Candidate Test
+Objective:
+Evaluate the candidate's ability to design UI, integrate APIs, and manipulate the DOM
+effectively using Next.js/React.js.
+---
+Problem Statement:
+Create a Car Finder Web App using Next.js (or React.js if preferred) that allows users to:
+1. Search for Cars based on filters like brand, price range, fuel type, and seating capacity.
+2. View Car Details when clicked from the search results.
+3. Add Cars to Wishlist (store wishlist items in Local Storage).
+4. Fetch Data from an API (provided or any mock API).
+5. Apply Real-Time UI Updates based on user interactions.
+---
+Requirements:
+Frontend (UI & UX) -
+Create a responsive design using TailwindCSS/Material UI/Bootstrap.
+Implement a search bar and filters for brand, price range, and fuel type.
+Use pagination to show only 10 cars per page.
+Provide a wishlist feature with an interactive UI.
+Display car images, names, and key specifications in a grid/list format.
+API Handling -
+Use Next.js API routes (or mock API) to fetch cars.
+Display loading states and error handling.
+Implement search and filter logic using API parameters.
+DOM Manipulation
+Add cars to the wishlist using Local Storage.
+Update the UI without page reloads when adding/removing from the wishlist.
+Show live updates when filters or search queries change.
+---
+Bonus Features
+Implement a dark mode toggle.
+Add animations or transitions for UI components.
+Allow users to sort cars by price (low to high, high to low).
+---
+Technology Stack:
+Next.js (Preferred) / React.js
+State Management: useState, useEffect (Redux optional)
+CSS Framework: TailwindCSS, Material UI, or Bootstrap
+Storage: LocalStorage for Wishlist
+---
+Submission Guidelines:
+Upload the project to GitHub (public repo).
+Share the GitHub link and a live demo (if deployed on Vercel/Netlify).
+Provide a README.md with setup instructions.
+---
+Evaluation Criteria:
+This assignment will test the candidate’s ability to design UI, handle APIs, manipulate the
+DOM dynamically, and create an interactive experience in a real-world project scenario.
